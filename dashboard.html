@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard – Page Content</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fb;
+      padding: 40px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .tab-btn.active {
+      background: #123c7b;
+      color: #fff;
+    }
+
+    .box {
+      max-width: 900px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 6px;
+    }
+
+    textarea {
+      min-height: 120px;
+    }
+
+    button.save {
+      margin-top: 25px;
+      padding: 14px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      background: #e53935;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .success {
+      display: none;
+      margin-top: 15px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('home')">Home Page</button>
+  <button class="tab-btn" onclick="showTab('about')">About Us</button>
+</div>
+
+<div class="box">
+
+  <!-- HOME PAGE -->
+  <div id="home" class="section active">
+    <h2>🏠 Home Page</h2>
+
+    <label>Hero Title</label>
+    <input id="homeHeroTitle">
+
+    <label>Hero Description</label>
+    <textarea id="homeHeroDesc"></textarea>
+
+    <label>Button Text</label>
+    <input id="homeHeroBtnText">
+
+    <label>Button Link</label>
+    <input id="homeHeroBtnLink">
+
+    <label>Hero Image</label>
+    <input type="file" id="homeHeroImage" accept="image/*">
+
+    <button class="save" onclick="saveHome()">Save Home</button>
+  </div>
+
+  <!-- ABOUT US -->
+  <div id="about" class="section">
+    <h2>👥 About Us</h2>
+   
+    <label>About Hero Title</label>
+    <input id="aboutHeroTitle">
+    
+    <label>About Hero Subtitle</label>
+    <input id="aboutHeroSubtitle">
+    
+    <label>About Hero Description</label>
+    <textarea id="aboutHeroDesc"></textarea>
+
+    <label>About Hero Image</label>
+    <input type="file" id="aboutHeroImage" accept="image/*">
+
+  
+<hr style="margin:30px 0;">
+
+<h3>Who We Are Section</h3>
+
+<label>Who We Are Title</label>
+<input id="whoTitle">
+
+<label>Who We Are Subtitle</label>
+<input id="whoSubtitle">
+
+<label>Who We Are Description</label>
+<textarea id="whoDesc"></textarea>
+
+<label>Who We Are Image</label>
+<input type="file" id="whoImage" accept="image/*">
+
+
+   
+
+    <button class="save" onclick="saveAbout()">Save About</button>
+  </div>
+
+  <div class="success" id="successMsg">✅ Saved successfully</div>
+
+</div>
+<hr style="margin:40px 0;">
+
+<h2>📩 Contact Requests</h2>
+
+<table border="1" width="100%" cellpadding="10">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Subject</th>
+      <th>Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody id="contactTable"></tbody>
+</table>
+
+<hr style="margin:40px 0;">
+
+<h2>🧑‍💼 Hiring Applications</h2>
+
+<table border="1" width="100%" cellpadding="10">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Position</th>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody id="hiringTable"></tbody>
+</table>
+<button onclick="logout()">Logout</button>
+<script>
+  function logout() {
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "login.html";
+  }
+</script>
+
+<script>
+  function showTab(tab) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+
+    document.getElementById(tab).classList.add("active");
+    event.target.classList.add("active");
+  }
+
+  function saveHome() {
+    localStorage.setItem("homeHeroTitle", homeHeroTitle.value);
+    localStorage.setItem("homeHeroDesc", homeHeroDesc.value);
+    localStorage.setItem("homeHeroBtnText", homeHeroBtnText.value);
+    localStorage.setItem("homeHeroBtnLink", homeHeroBtnLink.value);
+
+    const file = homeHeroImage.files[0];
+    if (file) {
+      const r = new FileReader();
+      r.onload = () => localStorage.setItem("homeHeroImage", r.result);
+      r.readAsDataURL(file);
+    }
+
+    showSuccess();
+  }
+
+  function saveAbout() {
+    localStorage.setItem("whoTitle", whoTitle.value);
+localStorage.setItem("whoSubtitle", whoSubtitle.value);
+localStorage.setItem("whoDesc", whoDesc.value);
+    localStorage.setItem("aboutHeroTitle", aboutHeroTitle.value);
+    localStorage.setItem("aboutHeroDesc", aboutHeroDesc.value);
+    localStorage.setItem("whoTitle", whoTitle.value);
+    localStorage.setItem("whoDesc", whoDesc.value);
+    localStorage.setItem("aboutHeroSubtitle", aboutHeroSubtitle.value);
+
+    if (aboutHeroImage.files[0]) {
+      const r = new FileReader();
+      r.onload = () => localStorage.setItem("aboutHeroImage", r.result);
+      r.readAsDataURL(aboutHeroImage.files[0]);
+    }
+
+    if (whoImage.files[0]) {
+      const r = new FileReader();
+      r.onload = () => localStorage.setItem("whoImage", r.result);
+      r.readAsDataURL(whoImage.files[0]);
+    }
+
+    showSuccess();
+  }
+
+  function showSuccess() {
+    successMsg.style.display = "block";
+    setTimeout(() => successMsg.style.display = "none", 3000);
+  }
+
+  // LOAD OLD DATA
+  
+  homeHeroTitle.value = localStorage.getItem("homeHeroTitle") || "";
+  homeHeroDesc.value = localStorage.getItem("homeHeroDesc") || "";
+  homeHeroBtnText.value = localStorage.getItem("homeHeroBtnText") || "";
+  homeHeroBtnLink.value = localStorage.getItem("homeHeroBtnLink") || "";
+
+  aboutHeroSubtitle.value =
+  localStorage.getItem("aboutHeroSubtitle") || "";
+  aboutHeroTitle.value = localStorage.getItem("aboutHeroTitle") || "";
+  aboutHeroDesc.value = localStorage.getItem("aboutHeroDesc") || "";
+  whoTitle.value = localStorage.getItem("whoTitle") || "";
+  whoDesc.value = localStorage.getItem("whoDesc") || "";
+
+  const aboutHeroSubtitle = localStorage.getItem("aboutHeroSubtitle");
+
+if (aboutHeroSubtitle)
+  document.querySelector(".about-hero-subtitle").innerText =
+    aboutHeroSubtitle;
+    
+    whoTitle.value = localStorage.getItem("whoTitle") || "";
+whoSubtitle.value = localStorage.getItem("whoSubtitle") || "";
+whoDesc.value = localStorage.getItem("whoDesc") || "";
+</script>
+
+<script>
+/* CONTACT */
+const contactTable = document.getElementById("contactTable");
+const contacts = JSON.parse(localStorage.getItem("contactSubmissions")) || [];
+
+contacts.forEach((c, i) => {
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${c.firstName} ${c.lastName}</td>
+    <td>${c.email}</td>
+    <td>${c.phone}</td>
+    <td>${c.subject}</td>
+    <td>${c.date}</td>
+    <td><button onclick="deleteContact(${i})">Delete</button></td>
+  `;
+  contactTable.appendChild(row);
+});
+
+function deleteContact(index) {
+  contacts.splice(index, 1);
+  localStorage.setItem("contactSubmissions", JSON.stringify(contacts));
+  location.reload();
+}
+
+/* HIRING */
+const hiringTable = document.getElementById("hiringTable");
+const hires = JSON.parse(localStorage.getItem("hiringSubmissions")) || [];
+
+hires.forEach((h, index) => {
+  const row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td>${h.name}</td>
+    <td>${h.phone}</td>
+    <td>${h.position}</td>
+    <td>${h.type}</td>
+    <td>
+      <a href="${h.fileData}" target="_blank">
+        ${h.fileName}
+      </a>
+    </td>
+    <td>${h.date}</td>
+    <td>
+      <button onclick="deleteHire(${index})">Delete</button>
+    </td>
+  `;
+
+  hiringTable.appendChild(row);
+});
+
+function deleteHire(index) {
+  hires.splice(index, 1);
+  localStorage.setItem("hiringSubmissions", JSON.stringify(hires));
+  location.reload();
+
+}
+</script>
+</body>
+</html>
