@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wenze Investments LLC</title>
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="../style.css" />
+ 
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    
+    <div class="logo">
+      
+  <a href="/hiring/hiring-office.html">
+    
+    <img src="/images/logo.png" alt="Wenze Investments LLC Logo">
+  
+  </a>
+  
+</div>
+<div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="nav" id="navMenu">
+       <a href="/index.html" class="nav-link">Home</a>
+     <a href="/about.html" class="nav-link">About Us</a>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle">Hiring</button>
+        <div class="dropdown-menu">
+          <a href="/hiring/hiring-office.html">Office</a>
+          <a href="/hiring/hiring-drivers.html">Drivers</a>
+        </div>
+      </div>
+
+      <a href="/contact.html" class="nav-link">Contact Us</a>
+    </nav>
+    
+  </div>
+</header>
+
+
+  <!-- MAIN -->
+    <main class="main-container">
+
+    <!-- HERO -->
+    <section class="hiring-hero">
+   
+    </section>
+
+    <!-- FORM SECTION -->
+    <section class="hiring-form-section">
+
+      <h2>Apply to Join Wenze</h2>
+      <p class="form-subtitle">
+        Fill out the form below and our team will contact you shortly.
+      </p>
+
+      <form class="hiring-form" id="hiringForm">
+
+        <input id="firstName" type="text" placeholder="First Name" required />
+        <input id="lastName" type="text" placeholder="Last Name" required />
+            <input 
+  type="text"
+  id="phone"
+  placeholder="+1 (___) ___-____"
+  required
+>
+        <select id="position" required>
+           <option value="">Select Your Position</option>
+          <option value="Dispatcher">Dispatcher</option>
+          <option value="Updater">Updater</option>
+          <option value="Safety">Safety</option>
+          <option value="Fleet">Fleet</option>
+          <option value="ELD">ELD</option>
+          <option value="Accounting">Accounting</option>          
+          <option value="HR">HR</option>
+          <option value="Recruiter">Recruiter</option>
+        </select>
+          <select id="experience" required>
+          <option value="">Select Your Experience</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3+">3+</option>
+        </select>
+        <p>Upload Your CV</p>
+         <input 
+         id="cdlFile"
+        type="file"
+        accept=".jpg, .jpeg, .pdf"
+        required
+        > 
+       <div class="sms-agreement">
+  <label class="checkbox-label">
+    <input type="checkbox" id="smsAgree">
+    <span>
+      I agree to receive SMS messages from
+      <strong>Wenze Investment LLC</strong>
+    </span>
+  </label>
+</div>
+        <button type="submit" id="sendBtn" disabled >SEND</button>
+        <p class="success-message" id="successMessage">
+  ✅ Your message has been sent successfully!
+</p>
+      </form>
+
+    </section>
+
+  </main>
+
+  
+   <!-- ================= FOOTER (FULL WIDTH) ================= -->
+ <footer class="footer">
+  <div class="footer-inner">
+
+    <!-- LEFT -->
+    <div class="footer-col footer-brand">
+      <img src="../images/logo.png" alt="Wenze Logo" class="footer-logo">
+
+      <div class="footer-contact">
+        <p>📞 +1 (470) 964-1248</p>
+        <p>✉️ freight@wenzellc.com</p>
+           <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/terms-conditions.html">Terms and Conditions</a>
+      </div>
+    </div>
+
+    <!-- COMPANY -->
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about.html">About Us</a>
+      <a href="/index.html">What We Do</a>
+      <a href="/hiring/hiring-drivers.html">Hiring</a>
+      <a href="/contact.html">Contact Us</a>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#">Strategic Investments</a>
+      <a href="#">Logistics Solutions</a>
+      <a href="#">Partnership & Consulting</a>
+      <a href="#">Nationwide Operations</a>
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="footer-col">
+      <h4>Social Networks</h4>
+      <div class="footer-socials">
+       <div class="footer-socials">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/wenze.llc?igsh=eXo0OXc2dzdtdDNm"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Wenze Investments LLC. All rights reserved.
+  </div>
+</footer>
+</script>
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target); // 1 marta chiqadi
+        }
+      });
+    },
+    {
+      threshold: 0.15
+    }
+  );
+
+  reveals.forEach((el) => observer.observe(el));
+</script>
+<script>
+  const toggle = document.querySelector(".dropdown-toggle");
+  const menu = document.querySelector(".dropdown-menu");
+
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("open");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove("open");
+    }
+  });
+</script>
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.getElementById("navMenu");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    nav.classList.toggle("open");
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      hamburger.classList.remove("active");
+    });
+  });
+</script> 
+<script>
+const BOT_TOKEN = "8511815799:AAGSh4Dg-VtnA6CGR55cLg9Q8EFaecHKyXo";
+const CHAT_ID = "-1003443403380";
+
+const form = document.getElementById("hiringForm");
+const successMessage = document.getElementById("successMessage");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const phone = document.getElementById("phone").value;
+  const position = document.getElementById("position").value;
+  const experience = document.getElementById("experience").value;
+  const file = document.getElementById("cdlFile").files[0];
+  
+
+  const message = `
+🚚 New Hiring Application
+
+👤 Name: ${firstName} ${lastName}
+📞 Phone: ${phone}
+💼 Position: ${position}
+💼 Expereince: ${experience}
+
+  `;
+
+  // 1️⃣ TEXT
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: message
+    })
+  })
+  .then(() => {
+    // 2️⃣ FILE
+    const formData = new FormData();
+    formData.append("chat_id", CHAT_ID);
+    formData.append("document", file);
+
+    return fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
+      method: "POST",
+      body: formData
+    });
+  })
+  .then(() => {
+    successMessage.style.display = "block";
+    form.reset();
+
+    setTimeout(() => {
+      successMessage.style.display = "none";
+    }, 4000);
+  })
+  .catch(err => {
+    console.error(err);
+    alert("❌ Error sending application");
+  });
+});
+</script>
+
+<script>
+  const smsAgree = document.getElementById("smsAgree");
+  const sendBtn = document.getElementById("sendBtn");
+
+  // Dastlab disabled
+  sendBtn.disabled = true;
+
+  smsAgree.addEventListener("change", () => {
+    sendBtn.disabled = !smsAgree.checked;
+  });
+</script>
+
+
+<script>
+  const phoneInput = document.getElementById("phone");
+
+  phoneInput.addEventListener("input", function () {
+    let value = phoneInput.value.replace(/\D/g, ""); // faqat raqamlar
+
+    // faqat 11 ta raqamgacha (+1XXXXXXXXXX)
+    if (value.length > 11) {
+      value = value.slice(0, 11);
+    }
+
+    // formatlash
+    if (value.length > 1) {
+      value = +1 ($,{value.slice(1,4)}) ,$,{value.slice(4,7)}-$,{value.slice(7,11)};
+    } else if (value.length === 1) {
+      value = +1;
+    }
+
+    phoneInput.value = value;
+  });
+</script>
+
+
+
+</body>
+</html>
