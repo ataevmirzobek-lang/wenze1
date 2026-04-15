@@ -1,0 +1,23 @@
+window.WENZE_CONFIG = {
+  DOMAIN: "wenzeinvestments.com",
+
+  EMAILJS: {
+    PUBLIC_KEY: "REPLACE_WITH_EMAILJS_PUBLIC_KEY",
+    SERVICE_ID: "REPLACE_WITH_EMAILJS_SERVICE_ID",
+    CONTACT_TEMPLATE_ID: "REPLACE_WITH_CONTACT_TEMPLATE_ID",
+    CONTACT_AUTOREPLY_TEMPLATE_ID: "REPLACE_WITH_CONTACT_AUTOREPLY_TEMPLATE_ID",
+    PASSWORD_RESET_TEMPLATE_ID: "REPLACE_WITH_PASSWORD_RESET_TEMPLATE_ID",
+    ADMIN_EMAIL: "freight@wenzellc.com"
+  },
+
+  ADMIN: {
+    EMAIL: "freight@wenzellc.com",
+    DEFAULT_PASSWORD: "Safetyfirst2026$"
+  },
+
+  UPLOAD: {
+    ENDPOINT: "/upload.php",
+    MAX_SIZE_MB: 20,
+    ALLOWED_TYPES: ["image/png", "image/jpeg", "application/pdf"]
+  }
+};

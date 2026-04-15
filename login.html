@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login</title>
   <style>
     body {
@@ -10,20 +11,30 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      margin: 0;
+      padding: 16px;
     }
 
     .login-box {
       background: #fff;
-      padding: 40px;
-      width: 360px;
+      padding: 32px;
+      width: 100%;
+      max-width: 420px;
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
     }
 
     h2 {
       text-align: center;
       margin-bottom: 25px;
+      color: #123c7b;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
       color: #123c7b;
     }
 
@@ -33,6 +44,7 @@
       margin-bottom: 15px;
       border-radius: 8px;
       border: 1px solid #ccc;
+      box-sizing: border-box;
     }
 
     button {
@@ -44,51 +56,132 @@
       font-size: 16px;
       border-radius: 8px;
       cursor: pointer;
+      margin-top: 6px;
     }
 
-    .error {
-      color: red;
-      text-align: center;
-      display: none;
+    button:hover {
+      background: #c62828;
+    }
+
+    .link-btn {
+      background: transparent;
+      color: #123c7b;
+      text-decoration: underline;
       margin-top: 10px;
     }
+
+    .link-btn:hover {
+      background: transparent;
+      color: #0c2d5d;
+    }
+
+    .error,
+    .success {
+      text-align: center;
+      display: none;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .error { color: #d32f2f; }
+    .success { color: #2e7d32; }
   </style>
+
+  <script src="site-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
-    <script>
-  if (localStorage.getItem("isLoggedIn") !== "true") {
-    window.location.href = "login.html";
-  }
-</script>
-
 <div class="login-box">
   <h2>Admin Login</h2>
 
-  <input type="text" id="username" placeholder="Username">
-  <input type="password" id="password" placeholder="Password">
+  <label for="email">Email</label>
+  <input type="email" id="email" placeholder="freight@wenzellc.com" required>
 
-  <button onclick="login()">Login</button>
+  <label for="password">Password</label>
+  <input type="password" id="password" placeholder="Enter password" required>
 
-  <div class="error" id="errorMsg">❌ Wrong username or password</div>
+  <button id="loginBtn" type="button">Login</button>
+  <button id="forgotBtn" class="link-btn" type="button">Forgot password?</button>
+
+  <div class="error" id="errorMsg">❌ Login yoki parol noto‘g‘ri.</div>
+  <div class="success" id="successMsg"></div>
 </div>
 
-
 <script>
-  function login() {
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
+  const config = window.WENZE_CONFIG;
+  const adminEmail = config.ADMIN.EMAIL;
 
-    // 🔐 LOGIN MA’LUMOTLARI 
-    if (user === "admin" && pass === "12345") {
-      localStorage.setItem("isLoggedIn", "true");
-      window.location.href = "dashboard.html";
-    } else {
-      document.getElementById("errorMsg").style.display = "block";
-    }
+  const storedPassword = localStorage.getItem("adminPassword") || config.ADMIN.DEFAULT_PASSWORD;
+
+  if (config.EMAILJS.PUBLIC_KEY && config.EMAILJS.PUBLIC_KEY !== "REPLACE_WITH_EMAILJS_PUBLIC_KEY") {
+    emailjs.init({ publicKey: config.EMAILJS.PUBLIC_KEY });
   }
+
+  function setMessage(el, text, show = true) {
+    el.textContent = text;
+    el.style.display = show ? "block" : "none";
+  }
+
+  document.getElementById("loginBtn").addEventListener("click", () => {
+    const email = document.getElementById("email").value.trim().toLowerCase();
+    const password = document.getElementById("password").value;
+
+    const errorMsg = document.getElementById("errorMsg");
+    const successMsg = document.getElementById("successMsg");
+    setMessage(errorMsg, "", false);
+    setMessage(successMsg, "", false);
+
+    if (email === adminEmail.toLowerCase() && password === (localStorage.getItem("adminPassword") || config.ADMIN.DEFAULT_PASSWORD)) {
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("adminEmail", adminEmail);
+      window.location.href = "dashboard.html";
+      return;
+    }
+
+    setMessage(errorMsg, "❌ Login yoki parol noto‘g‘ri.");
+  });
+
+  document.getElementById("forgotBtn").addEventListener("click", async () => {
+    const inputEmail = prompt("Parolni tiklash uchun admin emailingizni kiriting:");
+    const email = (inputEmail || "").trim().toLowerCase();
+
+    const errorMsg = document.getElementById("errorMsg");
+    const successMsg = document.getElementById("successMsg");
+    setMessage(errorMsg, "", false);
+    setMessage(successMsg, "", false);
+
+    if (!email || email !== adminEmail.toLowerCase()) {
+      setMessage(errorMsg, "❌ Bu email admin email bilan mos emas.");
+      return;
+    }
+
+    const newPassword = `Wenze-${Math.random().toString(36).slice(2, 8)}${Math.floor(100 + Math.random() * 900)}!`;
+    localStorage.setItem("adminPassword", newPassword);
+
+    const emailConfigured =
+      config.EMAILJS.PUBLIC_KEY !== "REPLACE_WITH_EMAILJS_PUBLIC_KEY" &&
+      config.EMAILJS.SERVICE_ID !== "REPLACE_WITH_EMAILJS_SERVICE_ID" &&
+      config.EMAILJS.PASSWORD_RESET_TEMPLATE_ID !== "REPLACE_WITH_PASSWORD_RESET_TEMPLATE_ID";
+
+    if (!emailConfigured) {
+      setMessage(successMsg, "⚠️ EmailJS sozlanmagan. Yangi parol localStorage’da saqlandi.");
+      return;
+    }
+
+    try {
+      await emailjs.send(config.EMAILJS.SERVICE_ID, config.EMAILJS.PASSWORD_RESET_TEMPLATE_ID, {
+        to_email: adminEmail,
+        site_domain: config.DOMAIN,
+        new_password: newPassword,
+        message_subject: `Password Reset - ${config.DOMAIN}`
+      });
+
+      setMessage(successMsg, "✅ Yangi parol emailingizga yuborildi.");
+    } catch (err) {
+      console.error(err);
+      setMessage(errorMsg, "❌ Email yuborishda xatolik. Keyinroq qayta urinib ko‘ring.");
+    }
+  });
 </script>
-
-
-
 </body>
 </html>

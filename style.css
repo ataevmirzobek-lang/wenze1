@@ -903,7 +903,7 @@ transform: translateY(-4px);
   opacity: 1;
   transform: translateY(0);
 }
-why-card:nth-child(1) { transition-delay: 0s; }
+.why-card:nth-child(1) { transition-delay: 0s; }
 .why-card:nth-child(2) { transition-delay: 0s; }
 .why-card:nth-child(3) { transition-delay: 0s; }
 
@@ -1146,7 +1146,7 @@ button:disabled {
   padding-right: 10px;
 }
 
-contact-section {
+.contact-section {
   
   background:#DCE1EB;
   padding: 60px 0;
