@@ -4,34 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wenze Investments LLC</title>
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="style.css" />
- 
+  <script src="site-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
-  <!-- ================= HEADER (FULL WIDTH) ================= -->
-  <header class="site-header">
+<header class="site-header">
   <div class="header-inner">
-    
     <div class="logo">
-      
-  <a href="/contact.html">
-    
-    <img src="/images/logo.png" alt="Wenze Investments LLC Logo">
-  
-  </a>
-  
-</div>
-<div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+      <a href="/contact.html">
+        <img src="/images/logo.png" alt="Wenze Investments LLC Logo">
+      </a>
     </div>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+
     <nav class="nav" id="navMenu">
-       <a href="/index.html" class="nav-link">Home</a>
-     <a href="/about.html" class="nav-link">About Us</a>
+      <a href="/index.html" class="nav-link">Home</a>
+      <a href="/about.html" class="nav-link">About Us</a>
 
       <div class="dropdown">
         <button class="dropdown-toggle">Hiring</button>
@@ -43,122 +37,100 @@
 
       <a href="/contact.html" class="nav-link">Contact Us</a>
     </nav>
-    
   </div>
 </header>
+
 <main class="page">
-    <div class="container">
-        <section class="contact-hero">
-  <div class="main-container contact-hero-inner">
-    <h1>Contact Us</h1>
-    <p>We’d love to hear from you. Get in touch with our team.</p>
-  </div>
-</section>
-
-<section class="contact-section">
-  <div class="main-container contact-grid">
-
-    <!-- LEFT: FORM -->
-    <form class="contact-form" id="contactForm">
-   <div class="row">
-  <div class="form-group">
-    <label>First Name</label>
-    <input id="firstName" type="text" name="firstName" placeholder="Enter Your First Name" required>
-  </div>
-
-  <div class="form-group">
-    <label>Last Name</label>
-    <input id="lastName" type="text" name="lastName" placeholder="Enter Your Last Name" required>
-  </div>
-</div>
-      <div class="row">
-    <div class="form-group">
-    <label>Email</label>
-    <input id="email" type="email" name="email" id="email" placeholder="Enter Your Email" required>
-  </div>
-
-  <div class="form-group">
-    <label>Phone Number</label>
-   <input
-   id="phone"
-  type="tel"
-  name="phone"
-  id="phone"
-  placeholder="+1 (___) ___-____"
-  required
->
-  </div>
+  <div class="container">
+    <section class="contact-hero">
+      <div class="main-container contact-hero-inner">
+        <h1>Contact Us</h1>
+        <p>We’d love to hear from you. Get in touch with our team.</p>
       </div>
-      <label>Subject</label>
-      <input id="subject" type="text" name="subject" placeholder="Subject" required>
-      <label>Message</label>
-      <textarea id="message" placeholder="Message" name="message" required></textarea>
+    </section>
 
-      <button type="submit">Submit Request</button>
-      <!-- SUCCESS MESSAGE -->
-  <p class="success-message" id="successMessage">
-    ✅ Your request has been sent successfully!
-  </p>
-    </form>
-    
+    <section class="contact-section">
+      <div class="main-container contact-grid">
 
-    <!-- RIGHT: CONTACT INFO -->
-    <div class="contact-info">
-     
-     <a href="mailto:freight@wenzellc.com" class="info-box email-box">
-  <i class="fa-solid fa-envelope"></i>
-  <p>freight@wenzellc.com</p>
-</a>
+        <form class="contact-form" id="contactForm">
+          <div class="row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input id="firstName" type="text" name="firstName" placeholder="Enter Your First Name" required>
+            </div>
 
-    <a href="tel:+1 (470) 964-1248" class="info-box">
-  <i class="fa-solid fa-phone"></i>
-  <p>+1 (470) 964-1248</p>
-</a>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input id="lastName" type="text" name="lastName" placeholder="Enter Your Last Name" required>
+            </div>
+          </div>
 
-    <a 
-  href="https://www.google.com/maps/search/?api=1&query=Auburn,Georgia,USA"
-  target="_blank"
-  class="info-box"
->
-  <i class="fa-solid fa-location-dot"></i>
-  <p>Auburn, Georgia, USA</p>
-</a>
+          <div class="row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="Enter Your Email" required>
+            </div>
 
-      <div class="info-box">
-        <h4>Social Networks</h4>
-        <div class="socials">
-         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/wenze.llc?igsh=eXo0OXc2dzdtdDNm"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-telegram"></i></a>
-            <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input id="phone" type="tel" name="phone" placeholder="+1 (___) ___-____" required>
+            </div>
+          </div>
+
+          <label for="subject">Subject</label>
+          <input id="subject" type="text" name="subject" placeholder="Subject" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Message" name="message" required></textarea>
+
+          <button type="submit">Submit Request</button>
+          <p class="success-message" id="successMessage">✅ Your request has been sent successfully!</p>
+          <p class="success-message" id="warningMessage" style="color:#b26a00; display:none;">⚠️ EmailJS sozlanmagan. Ma'lumot local storage ga saqlandi.</p>
+        </form>
+
+        <div class="contact-info">
+          <a href="mailto:freight@wenzellc.com" class="info-box email-box">
+            <i class="fa-solid fa-envelope"></i>
+            <p>freight@wenzellc.com</p>
+          </a>
+
+          <a href="tel:+14709641248" class="info-box">
+            <i class="fa-solid fa-phone"></i>
+            <p>+1 (470) 964-1248</p>
+          </a>
+
+          <a href="https://www.google.com/maps/search/?api=1&query=Auburn,Georgia,USA" target="_blank" class="info-box">
+            <i class="fa-solid fa-location-dot"></i>
+            <p>Auburn, Georgia, USA</p>
+          </a>
+
+          <div class="info-box">
+            <h4>Social Networks</h4>
+            <div class="socials">
+              <a href="https://www.facebook.com/profile.php?id=61587440728739" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/wenze.llc?igsh=eXo0OXc2dzdtdDNm" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+              <a href="https://www.youtube.com/" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
+    </section>
   </div>
-</section>
+</main>
 
-          </div>
-    
-  </main>
-
-<!-- ================= FOOTER (FULL WIDTH) ================= -->
- <footer class="footer">
+<footer class="footer">
   <div class="footer-inner">
-
-    <!-- LEFT -->
     <div class="footer-col footer-brand">
       <img src="images/logo.png" alt="Wenze Logo" class="footer-logo">
-
       <div class="footer-contact">
        <p>📞 +1 (470) 964-1248</p>
-        <p>✉️ freight@wenzellc.com</p>
-           <a href="/privacy-policy.html">Privacy Policy</a>
-            <a href="/terms-conditions.html">Terms and Conditions</a>
+       <p>✉️ freight@wenzellc.com</p>
+       <a href="/privacy-policy.html">Privacy Policy</a>
+       <a href="/terms-conditions.html">Terms and Conditions</a>
       </div>
     </div>
 
-    <!-- COMPANY -->
     <div class="footer-col">
       <h4>Company</h4>
       <a href="/about.html">About Us</a>
@@ -167,7 +139,6 @@
       <a href="/contact.html">Contact Us</a>
     </div>
 
-    <!-- SERVICES -->
     <div class="footer-col">
       <h4>Services</h4>
       <a href="#">Strategic Investments</a>
@@ -176,59 +147,29 @@
       <a href="#">Nationwide Operations</a>
     </div>
 
-    <!-- SOCIAL -->
     <div class="footer-col">
       <h4>Social Networks</h4>
       <div class="footer-socials">
-       <div class="footer-socials">
-            <a href="https://www.facebook.com/profile.php?id=61587440728739"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/wenze.llc?igsh=eXo0OXc2dzdtdDNm"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-telegram"></i></a>
-            <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
-      </div>
+        <a href="https://www.facebook.com/profile.php?id=61587440728739" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/wenze.llc?igsh=eXo0OXc2dzdtdDNm" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+        <a href="https://www.youtube.com/" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
-
   </div>
 
-  <div class="footer-bottom">
-    © 2026 Wenze Investments LLC. All rights reserved.
-  </div>
+  <div class="footer-bottom">© 2026 Wenze Investments LLC. All rights reserved.</div>
 </footer>
-<script>
-  const reveals = document.querySelectorAll(".reveal");
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-          observer.unobserve(entry.target); // 1 marta chiqadi
-        }
-      });
-    },
-    {
-      threshold: 0.15
-    }
-  );
-
-  reveals.forEach((el) => observer.observe(el));
-</script>
 <script>
   const toggle = document.querySelector(".dropdown-toggle");
   const menu = document.querySelector(".dropdown-menu");
 
-  toggle.addEventListener("click", () => {
-    menu.classList.toggle("open");
+  toggle.addEventListener("click", () => menu.classList.toggle("open"));
+  document.addEventListener("click", (e) => {
+    if (!toggle.contains(e.target) && !menu.contains(e.target)) menu.classList.remove("open");
   });
 
-  document.addEventListener("click", (e) => {
-    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-      menu.classList.remove("open");
-    }
-  });
-</script>
-<script>
   const hamburger = document.getElementById("hamburger");
   const nav = document.getElementById("navMenu");
   const navLinks = document.querySelectorAll(".nav-link");
@@ -245,109 +186,112 @@
     });
   });
 </script>
+
 <script>
-const form = document.getElementById("contactForm");
-const successMessage = document.getElementById("successMessage");
-
-
+  const config = window.WENZE_CONFIG;
+  const form = document.getElementById("contactForm");
+  const successMessage = document.getElementById("successMessage");
+  const warningMessage = document.getElementById("warningMessage");
   const phoneInput = document.getElementById("phone");
 
-  // PHONE FORMATTER
+  if (config.EMAILJS.PUBLIC_KEY && config.EMAILJS.PUBLIC_KEY !== "REPLACE_WITH_EMAILJS_PUBLIC_KEY") {
+    emailjs.init({ publicKey: config.EMAILJS.PUBLIC_KEY });
+  }
+
   phoneInput.addEventListener("input", () => {
     let digits = phoneInput.value.replace(/\D/g, "");
-
-    // faqat 11 ta raqamga ruxsat (+1XXXXXXXXXX)
-    if (digits.length > 11) {
-      digits = digits.slice(0, 11);
-    }
-
-    // +1 format
-    if (digits.startsWith("1")) {
-      digits = digits.slice(1);
-    }
+    if (digits.startsWith("1")) digits = digits.slice(1);
+    digits = digits.slice(0, 10);
 
     let formatted = "+1";
-
-    if (digits.length > 0) {
-      formatted += " (" + digits.substring(0, 3);
-    }
-    if (digits.length >= 4) {
-      formatted += ") " + digits.substring(3, 6);
-    }
-    if (digits.length >= 7) {
-      formatted += "-" + digits.substring(6, 10);
-    }
+    if (digits.length > 0) formatted += ` (${digits.substring(0, 3)}`;
+    if (digits.length >= 4) formatted += `) ${digits.substring(3, 6)}`;
+    if (digits.length >= 7) formatted += `-${digits.substring(6, 10)}`;
 
     phoneInput.value = formatted;
   });
 
-  // FORM SUBMIT
- form.addEventListener("submit", function (e) {
-  e.preventDefault();
+  function validateForm() {
+    let valid = true;
+    const requiredFields = form.querySelectorAll("input[required], textarea[required]");
 
-  let valid = true;
-  const inputs = form.querySelectorAll("input, textarea");
+    requiredFields.forEach((field) => {
+      field.classList.remove("error");
+      if (!field.value.trim()) {
+        field.classList.add("error");
+        valid = false;
+      }
+    });
 
-  // ERRORLARNI TOZALASH
-  inputs.forEach(input => {
-    input.classList.remove("error");
-    input.style.borderColor = "";
-  });
-
-  // BO‘SH MAYDONLAR
-  inputs.forEach(input => {
-    if (!input.value.trim()) {
-      input.classList.add("error");
+    const phoneDigits = phoneInput.value.replace(/\D/g, "");
+    if (phoneDigits.length !== 11) {
+      phoneInput.classList.add("error");
       valid = false;
     }
-  });
 
-  // PHONE VALIDATION
-  const phoneDigits = phoneInput.value.replace(/\D/g, "");
-  if (phoneDigits.length !== 11) {
-    phoneInput.classList.add("error");
-    valid = false;
+    return valid;
   }
 
-  // EMAIL VALIDATION
-  const emailInput = document.getElementById("email");
-  if (emailInput && !emailInput.value.includes("@")) {
-    emailInput.classList.add("error");
-    valid = false;
-  }
-
-  if (!valid) return;
-
-  // ✅ MAʼLUMOTNI SAQLASH
-  const data = {
-    firstName: firstName.value,
-    lastName: lastName.value,
-    email: email.value,
-    phone: phone.value,
-    subject: subject.value,
-    message: message.value,
-    date: new Date().toLocaleString()
-  };
-
-  let contacts = JSON.parse(localStorage.getItem("contactSubmissions")) || [];
-  contacts.push(data);
-  localStorage.setItem("contactSubmissions", JSON.stringify(contacts));
-
-  // ✅ SUCCESS
-  successMessage.style.display = "block";
-  form.reset();
-
-  // 🔥 QIZIL RAMKALARNI BUTUNLAY YO‘Q QILISH
-  form.querySelectorAll("input, textarea, select").forEach(el => {
-    el.classList.remove("error", "invalid");
-    el.style.borderColor = "";
-  });
-
-  setTimeout(() => {
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
     successMessage.style.display = "none";
-  }, 3000);
-});
- 
+    warningMessage.style.display = "none";
+
+    if (!validateForm()) return;
+
+    const payload = {
+      first_name: document.getElementById("firstName").value.trim(),
+      last_name: document.getElementById("lastName").value.trim(),
+      from_email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      subject: document.getElementById("subject").value.trim(),
+      message: document.getElementById("message").value.trim(),
+      site_domain: config.DOMAIN,
+      message_subject: `Contact Request - ${config.DOMAIN}`,
+      to_email: config.EMAILJS.ADMIN_EMAIL
+    };
+
+    const emailConfigured =
+      config.EMAILJS.PUBLIC_KEY !== "REPLACE_WITH_EMAILJS_PUBLIC_KEY" &&
+      config.EMAILJS.SERVICE_ID !== "REPLACE_WITH_EMAILJS_SERVICE_ID" &&
+      config.EMAILJS.CONTACT_TEMPLATE_ID !== "REPLACE_WITH_CONTACT_TEMPLATE_ID";
+
+    try {
+      if (emailConfigured) {
+        await emailjs.send(config.EMAILJS.SERVICE_ID, config.EMAILJS.CONTACT_TEMPLATE_ID, payload);
+
+        if (config.EMAILJS.CONTACT_AUTOREPLY_TEMPLATE_ID !== "REPLACE_WITH_CONTACT_AUTOREPLY_TEMPLATE_ID") {
+          await emailjs.send(config.EMAILJS.SERVICE_ID, config.EMAILJS.CONTACT_AUTOREPLY_TEMPLATE_ID, {
+            to_email: payload.from_email,
+            customer_name: `${payload.first_name} ${payload.last_name}`,
+            site_domain: config.DOMAIN,
+            message_subject: `We received your request - ${config.DOMAIN}`
+          });
+        }
+      }
+
+      const data = {
+        firstName: payload.first_name,
+        lastName: payload.last_name,
+        email: payload.from_email,
+        phone: payload.phone,
+        subject: payload.subject,
+        message: payload.message,
+        date: new Date().toLocaleString()
+      };
+
+      const contacts = JSON.parse(localStorage.getItem("contactSubmissions")) || [];
+      contacts.push(data);
+      localStorage.setItem("contactSubmissions", JSON.stringify(contacts));
+
+      successMessage.style.display = "block";
+      if (!emailConfigured) warningMessage.style.display = "block";
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      alert("❌ Error sending contact request");
+    }
+  });
 </script>
 </body>
 </html>

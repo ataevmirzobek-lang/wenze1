@@ -85,10 +85,16 @@
   </style>
 </head>
 <body>
+<script>
+  if (localStorage.getItem("isLoggedIn") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
+
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="showTab('home')">Home Page</button>
-  <button class="tab-btn" onclick="showTab('about')">About Us</button>
+  <button class="tab-btn active" onclick="showTab('home', event)">Home Page</button>
+  <button class="tab-btn" onclick="showTab('about', event)">About Us</button>
 </div>
 
 <div class="box">
@@ -201,12 +207,12 @@
 </script>
 
 <script>
-  function showTab(tab) {
+  function showTab(tab, ev) {
     document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
     document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
 
     document.getElementById(tab).classList.add("active");
-    event.target.classList.add("active");
+    if (ev && ev.target) ev.target.classList.add("active");
   }
 
   function saveHome() {
@@ -271,7 +277,7 @@ localStorage.setItem("whoDesc", whoDesc.value);
 
   const aboutHeroSubtitle = localStorage.getItem("aboutHeroSubtitle");
 
-if (aboutHeroSubtitle)
+if (aboutHeroSubtitle && document.querySelector(".about-hero-subtitle"))
   document.querySelector(".about-hero-subtitle").innerText =
     aboutHeroSubtitle;
     
